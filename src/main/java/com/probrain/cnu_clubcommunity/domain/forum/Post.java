@@ -1,16 +1,21 @@
 package com.probrain.cnu_clubcommunity.domain.forum;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.experimental.SuperBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "post")
+@SuperBuilder
 @Getter
-@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Post extends BaseEntity {
     @Id
     @Column(name = "post_id")
@@ -23,7 +28,7 @@ public class Post extends BaseEntity {
     @Column(name = "like_count")
     private Integer likeCount;
     @Column(name = "is_notice", nullable = false)
-    private boolean isNotice;
+    private Boolean isNotice;
     @OneToOne(mappedBy = "post")
     private PostHashtag postHashtag;
     @OneToMany(mappedBy = "post")
